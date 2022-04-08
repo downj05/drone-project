@@ -43,6 +43,8 @@ while True:
 
 	elif command == 'p': # Add Post
 		post_time = int(time())
+		logging.info("Enter name")
+		name = input(": ")
 		logging.info("Enter author")
 		author = input(": ")
 		logging.info("Enter image url")
@@ -51,8 +53,9 @@ while True:
 		post_hash = sha256(f"{author}{time}{url}".encode('utf-8')).hexdigest()
 
 		post = {
-		'time': post_time,
+		'name': name,
 		'author': author,
+		'time': post_time,
 		'url': url,
 		'id': post_hash[:7] # there is a pretty decent chance of a collision happening here, oh well pie!
 		}
